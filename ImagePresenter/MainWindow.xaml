@@ -1,0 +1,83 @@
+﻿<Window x:Class="ImagePresenter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImagePresenter" xmlns:local1="clr-namespace:ImagePresenter.ViewModel"
+        mc:Ignorable="d"
+        Title="Image Presenter" 
+        Height="700" 
+        Width="900"
+        MinHeight="500" 
+        MinWidth="700">
+    <Window.DataContext>
+        <local1:ImagePresenterWiewModel/>
+    </Window.DataContext>
+    <Grid>
+
+        <Border BorderBrush="Black" BorderThickness="2" Margin="0,118,0,29">
+            <Image x:Name="image" 
+                   Source="{Binding Image}" 
+                   Grid.ColumnSpan="2" 
+                   Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"             
+             />
+        </Border>
+
+        <Button x:Name="button" 
+                Command="{Binding LoadImage}"
+                Content="Wczytaj obraz" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="15,10,0,0" 
+                VerticalAlignment="Top" 
+                Width="121"
+                />
+
+        <Button x:Name="button1" 
+                Command="{Binding ImageToMainColors}"
+                Content="ToMainColors" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="205,10,0,0" 
+                VerticalAlignment="Top" 
+                Width="121"
+                />
+
+        <Button x:Name="button2" 
+                Command="{Binding ImageToMainColorsAsync}"
+                Content="ToMainColorsAsync" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="205,40,0,0" 
+                VerticalAlignment="Top" 
+                Width="121"
+                />
+        <Button x:Name="button3" 
+                Command="{Binding Save}"
+                Content="Zapisz" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="428,10,0,0" 
+                VerticalAlignment="Top" 
+                Width="95" Grid.ColumnSpan="2"
+                />
+        <Button x:Name="button4" 
+                Command="{Binding Reset}"
+                Content="Reset" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                Margin="205,70,0,0" 
+                VerticalAlignment="Top" 
+                Width="121"
+                />
+        <Label x:Name="label" 
+               Content="{Binding elapsedTime}" 
+               Height="60" 
+               Margin="345,22,400,0" 
+               VerticalAlignment="Top"/>
+
+        <TextBlock x:Name="textBlock"  Foreground="Red" Text="{Binding imagePath}"  Height="24" VerticalAlignment="Bottom"/>
+
+
+    </Grid>
+</Window>
