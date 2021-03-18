@@ -60,17 +60,7 @@ namespace ImagePresenter.ViewModel
                 return this._canExecute(parameter);
             }
         }
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
-        }
+
 
         public override Task ExecuteAsync(object parameter)
         {

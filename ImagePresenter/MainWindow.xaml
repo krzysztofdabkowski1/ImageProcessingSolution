@@ -11,7 +11,7 @@
         MinHeight="500" 
         MinWidth="700">
     <Window.DataContext>
-        <local1:ImagePresenterWiewModel/>
+        <local1:ImagePresenterViewModel/>
     </Window.DataContext>
     <Grid>
 

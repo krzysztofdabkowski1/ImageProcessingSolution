@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
 using Xunit.Sdk;
+using ImgProc;
 
 namespace ImageProcessingUnitTest
 {
@@ -35,13 +36,13 @@ namespace ImageProcessingUnitTest
             equalColors = SetOneColor(equalColors, 100, 100, 100);
 
 
-            Assert.AreEqual(red.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreRed).GetPixel(1, 1));
-            Assert.AreEqual(green.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreGreen).GetPixel(1, 1));
-            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreBlue).GetPixel(1, 1));
-            Assert.AreEqual(green.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreRedAndGreen, ImageProcessing.ImageProcessing.ColorPriority.GRB).GetPixel(1, 1));
-            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreRedAndBlue, ImageProcessing.ImageProcessing.ColorPriority.GBR).GetPixel(1, 1));
-            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(moreBlueAndGreen, ImageProcessing.ImageProcessing.ColorPriority.BRG).GetPixel(1, 1));
-            Assert.AreEqual(red.GetPixel(1, 1), ImageProcessing.ImageProcessing.ToMainColors(equalColors, ImageProcessing.ImageProcessing.ColorPriority.RBG).GetPixel(1, 1));
+            Assert.AreEqual(red.GetPixel(1, 1), ImageProcessing.ToMainColors(moreRed).GetPixel(1, 1));
+            Assert.AreEqual(green.GetPixel(1, 1), ImageProcessing.ToMainColors(moreGreen).GetPixel(1, 1));
+            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ToMainColors(moreBlue).GetPixel(1, 1));
+            Assert.AreEqual(green.GetPixel(1, 1), ImageProcessing.ToMainColors(moreRedAndGreen, ImageProcessing.ColorPriority.GRB).GetPixel(1, 1));
+            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ToMainColors(moreRedAndBlue, ImageProcessing.ColorPriority.GBR).GetPixel(1, 1));
+            Assert.AreEqual(blue.GetPixel(1, 1), ImageProcessing.ToMainColors(moreBlueAndGreen, ImageProcessing.ColorPriority.BRG).GetPixel(1, 1));
+            Assert.AreEqual(red.GetPixel(1, 1), ImageProcessing.ToMainColors(equalColors, ImageProcessing.ColorPriority.RBG).GetPixel(1, 1));
 
         }
 

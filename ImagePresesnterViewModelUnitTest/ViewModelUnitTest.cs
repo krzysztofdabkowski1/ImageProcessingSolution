@@ -8,10 +8,16 @@ namespace ImagePresesnterViewModelUnitTest
     {
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestInitialCommandsActivity()
             
         {
-            ImagePresenterViewModel wievModel = new ImagePresenterViewModel();
+            ImagePresenterViewModel viewModel = new ImagePresenterViewModel();
+
+            Assert.IsFalse(viewModel.ImageToMainColors.CanExecute(null));
+            Assert.IsFalse(viewModel.ImageToMainColorsAsync.CanExecute(null));
+            Assert.IsFalse(viewModel.Save.CanExecute(null));
+            Assert.IsFalse(viewModel.Reset.CanExecute(null));
+            Assert.IsTrue(viewModel.LoadImage.CanExecute(null));
         }
     }
 }

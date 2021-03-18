@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using ImgProc;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,7 +40,7 @@ namespace ImagePresenter.Model
         }
 
     
-        public bool LoadImage()
+        public bool LoadImage(string fileName)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG)| *.BMP; *.JPG; *.PNG; ";
@@ -47,7 +48,7 @@ namespace ImagePresenter.Model
 
             if(!fileDialog.FileName.Equals(""))
             {
-                bitmap = ImageProcessing.ImageProcessing.LoadImage(fileDialog.FileName);
+                bitmap = ImageProcessing.LoadImage(fileDialog.FileName);
                 unprocessedBitmap = new Bitmap(bitmap);
                 imagePath = fileDialog.FileName;
                 isBitmapProcessed = false;
@@ -67,7 +68,7 @@ namespace ImagePresenter.Model
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            bitmap = ImageProcessing.ImageProcessing.ToMainColors(bitmap, ImageProcessing.ImageProcessing.ColorPriority.BRG);
+            bitmap = ImageProcessing.ToMainColors(bitmap, ImageProcessing.ColorPriority.BRG);
             sw.Stop();
             elapsedTime = sw.ElapsedMilliseconds.ToString();
             isBitmapProcessed = true;
@@ -77,7 +78,7 @@ namespace ImagePresenter.Model
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            bitmap = await ImageProcessing.ImageProcessing.ToMainColorsAsync(bitmap, ImageProcessing.ImageProcessing.ColorPriority.RGB);
+            bitmap = await ImageProcessing.ToMainColorsAsync(bitmap, ImageProcessing.ColorPriority.RGB);
             sw.Stop();
             elapsedTime = sw.ElapsedMilliseconds.ToString();
             isBitmapProcessed = true;
@@ -93,7 +94,7 @@ namespace ImagePresenter.Model
 
             if (!saveDialog.FileName.Equals(""))
             {
-                ImageProcessing.ImageProcessing.SaveImage(bitmap, saveDialog.FileName, saveDialog.FileName == imagePath);
+                ImageProcessing.SaveImage(bitmap, saveDialog.FileName, saveDialog.FileName == imagePath);
                 isBitmapProcessed = true;
             }
         }
