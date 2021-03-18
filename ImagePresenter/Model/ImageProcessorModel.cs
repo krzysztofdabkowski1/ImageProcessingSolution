@@ -40,7 +40,7 @@ namespace ImagePresenter.Model
         }
 
     
-        public bool LoadImage(string fileName)
+        public bool LoadImage()
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG)| *.BMP; *.JPG; *.PNG; ";
@@ -68,7 +68,7 @@ namespace ImagePresenter.Model
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            bitmap = ImageProcessing.ToMainColors(bitmap, ImageProcessing.ColorPriority.BRG);
+            bitmap = ImageProcessing.ToMainColors(bitmap, ImageProcessing.ColorPriority.RGB);
             sw.Stop();
             elapsedTime = sw.ElapsedMilliseconds.ToString();
             isBitmapProcessed = true;
